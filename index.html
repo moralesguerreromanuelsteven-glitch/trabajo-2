@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<body>
+
+<button onclick="obtenerUbicacion()">Compartir ubicación</button>
+
+<p id="coordenadas"></p>
+
+<script>
+function obtenerUbicacion() {
+    navigator.geolocation.getCurrentPosition(
+        function(posicion) {
+            const lat = posicion.coords.latitude;
+            const lon = posicion.coords.longitude;
+
+            document.getElementById("coordenadas").textContent =
+                lat + ", " + lon;
+        },
+        function() {
+            document.getElementById("coordenadas").textContent =
+                "No se pudo obtener la ubicación.";
+        }
+    );
+}
+</script>
+
+</body>
+</html>
